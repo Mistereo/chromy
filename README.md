@@ -1,4 +1,4 @@
-# Chromy
+# Chromy without sharp (and some features) as dependency
 
 Chromy is a library for operating headless chrome.
 
@@ -59,7 +59,7 @@ main()
 
 ### Mobile Emulation
 
-Chromy provides mobile emulation.  
+Chromy provides mobile emulation.
 The emulation changes a screen resolution, density, userAgent and provides touch emulation.
 
 ```js
@@ -86,10 +86,10 @@ chromy.chain()
 
 ##### Chromy(options)
 
-###### options  
+###### options
 
  - host(default: localhost): host address
- - port(default: 9222): --remote-debugging-port  
+ - port(default: 9222): --remote-debugging-port
  - userDataDir(default: null): Chrome profile path. This option can be used to persist an user profile.
  - launchBrowser(default: true): If you want chromy to attach to Chrome that is already launched, set to true.
  - visible(default: false): If set to true, chrome is launched in visible mode. This option is not used if launchBrowser is false.
@@ -140,7 +140,7 @@ file: injected file.
 
 ##### .evaluate(func|source)
 
-Evaluates a expression in the browser context.  
+Evaluates a expression in the browser context.
 If the expression returns a Promise object, the promise is resolved automatically.
 
 ##### .result(func)
@@ -273,46 +273,6 @@ See examples: [examples/screenshot.js](examples/screenshot.js)
  - format(default: 'png'): must be either 'png' or 'jpeg'
  - quality(default: 100): quality of image.
  - fromSurface(default: true): if set to true, take screenshot from surface.
- - useDeviceResolution(default: false): if set to true, the image will have same resolution with device.
-
-##### .screenshotSelector(selector, options={})
-
-Exports an area of selector you specified as an image data.
-
-See examples: [examples/screenshot.js](examples/screenshot.js)
-
-Note:
-
- - The size of target specified by selector must be smaller than viewport size. If not, image gets cropped.
- - It has a side-effect. After this api is called, scroll position is moved to target position.
-
-###### options
-
-See screenshot()
-
-##### .screenshotMultipleSelectors(selectors, callback, options = {})
-
-Takes multiple screenshot specified by selector at once.
-Each image can be received by callback.
-
-Limitation:
- - It is impossible that taking a screenshot of the element positioned at below of 16384px because of limitation of chrome.
-   Detail: https://groups.google.com/a/chromium.org/d/msg/headless-dev/DqaAEXyzvR0/P9zmTLMvDQAJ
-
-###### Parameter
-
- - selectors: An array of selector
- - callback: function(error, image, index, selectors, subIndex)
-   - error: error information.
-   - image: image data
-   - index: index of selectors.
-   - subIndex: this value is used only if useQuerySelecotrAll is true.
- - options:  
-   - model: see explanation of screenDocument()
-   - format: see explanation of screenshot()
-   - quality: see explanation of screenshot()
-   - fromSurface: see explanation of screenshot()
-   - useQuerySelectorAll(default: false): If set to true, take all the screenshot of elements returned from document.querySelectorAll() (Since v 0.2.13)
 
 ##### .screenshotDocument(options = {})
 
@@ -377,7 +337,7 @@ chromy.chain()
 
 ##### .receiveMessage(func)
 
-receive a message from browser.  
+receive a message from browser.
 
 You can communicate with a browser by using receiveMessage() and sendToChromy().
 sendToChromy() is a special function to communicate with Chromy.
@@ -398,11 +358,11 @@ chromy.chain()
 
 ##### blockUrls(urls)
 
-blocks urls from loading.  
+blocks urls from loading.
 
 ###### Parameter
 
-urls: array[string]  
+urls: array[string]
 Wildcard('*') is allowed in url string.
 
 ##### clearBrowserCache()

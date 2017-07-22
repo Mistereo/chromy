@@ -23,20 +23,6 @@ describe('screenshot', function() {
             done(e)
           })
   })
-  it('screenshotSelector', (done) => {
-    const chromy = new Chromy()
-    chromy.chain()
-          .goto(page)
-          .screenshotSelector('a')
-          .result(img => {
-            assert.ok(img !== null)
-          })
-          .end()
-          .then(_ => done())
-          .catch(e => {
-            done(e)
-          })
-  })
   it('screenshotDocument', (done) => {
     const chromy = new Chromy()
     chromy.chain()
@@ -44,20 +30,6 @@ describe('screenshot', function() {
           .screenshotDocument()
           .result(img => {
             assert.ok(img !== null)
-          })
-          .end()
-          .then(_ => done())
-          .catch(e => {
-            done(e)
-          })
-  })
-  it('screenshotMultipleSelectors', (done) => {
-    const chromy = new Chromy()
-    chromy.chain()
-          .goto(page)
-          .screenshotMultipleSelectors(['a', 'form'], (err, buffer) => {
-            assert.ok(err === null)
-            assert.ok(buffer !== null)
           })
           .end()
           .then(_ => done())
