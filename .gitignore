@@ -2,5 +2,5 @@ node_modules
 .DS_Store
 .idea
 tmp
-dist
+dist/*.js.map
 dist_test
